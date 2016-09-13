@@ -1,0 +1,10 @@
+<resources>
+
+    <string name="app_name">Parcelman</string>
+    <string name="action_about">About</string>
+
+    <string name="about_dialog_caption">About</string>
+    <string name="about_dialog_message">Parcelman, version 1.0</string>
+    <string name="about_dialog_neutral">Close</string>
+
+</resources>
