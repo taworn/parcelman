@@ -12,25 +12,26 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class EditActivity extends AppCompatActivity {
+public class EditMasterActivity extends AppCompatActivity {
 
-    private static final String TAG = EditActivity.class.getSimpleName();
+    private static final String TAG = EditMasterActivity.class.getSimpleName();
 
+    private EditText editName = null;
     private EditText editData = null;
 
-    private Sample.Subsample item = null;
-    private int position = 0;
+    private Sample item = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit);
+        setContentView(R.layout.activity_edit_master);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null)
             actionBar.setDisplayHomeAsUpEnabled(true);
 
+        editName = (EditText) findViewById(R.id.edit_name);
         editData = (EditText) findViewById(R.id.edit_data);
 
         Button buttonSave = (Button) findViewById(R.id.button_save);
@@ -41,20 +42,6 @@ public class EditActivity extends AppCompatActivity {
                     uiToData();
                     Intent resultIntent = new Intent();
                     resultIntent.putExtra("data.item", item);
-                    resultIntent.putExtra("data.position", position);
-                    setResult(Activity.RESULT_OK, resultIntent);
-                    finish();
-                }
-            });
-        }
-        Button buttonDelete = (Button) findViewById(R.id.button_delete);
-        if (buttonDelete != null) {
-            buttonDelete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent resultIntent = new Intent();
-                    resultIntent.putExtra("data.delete", true);
-                    resultIntent.putExtra("data.position", position);
                     setResult(Activity.RESULT_OK, resultIntent);
                     finish();
                 }
@@ -64,15 +51,12 @@ public class EditActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             item = bundle.getParcelable("data.item");
-            position = bundle.getInt("data.position");
         }
         else {
-            item = new Sample.Subsample();
-            if (buttonDelete != null)
-                buttonDelete.setVisibility(View.INVISIBLE);
+            item = new Sample();
         }
         uiFromData();
-        Log.d(TAG, "onCreate() item: " + item.getData() + "/" + item.getPreviousData());
+        Log.d(TAG, "onCreate()");
     }
 
     @Override
@@ -101,13 +85,17 @@ public class EditActivity extends AppCompatActivity {
     }
 
     private void uiFromData() {
+        String name = item.getName();
         String data = Integer.toString(item.getData());
+        editName.setText(name);
         editData.setText(data);
     }
 
     private void uiToData() {
         try {
+            String name = editName.getText().toString().trim();
             String data = editData.getText().toString().trim();
+            item.setName(name);
             item.setData(Integer.parseInt(data));
         }
         catch (NumberFormatException ex) {

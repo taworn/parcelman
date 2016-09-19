@@ -8,13 +8,33 @@
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".EditActivity"
-    tools:showIn="@layout/activity_edit">
+    tools:showIn="@layout/activity_edit_master">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/material_margin">
+
+            <ImageView
+                style="@style/AppTheme.material_1st_image_edit"
+                android:contentDescription="@string/edit_hint_data"
+                android:src="@drawable/ic_create_black_24dp"/>
+
+            <EditText
+                android:id="@+id/edit_name"
+                style="@style/AppTheme.material_2nd_edit"
+                android:hint="@string/edit_hint_name"
+                android:inputType="text"
+                android:maxLength="255"
+                android:singleLine="true"/>
+
+        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -51,15 +71,6 @@
             android:drawableLeft="@drawable/ic_save_black_24dp"
             android:drawableStart="@drawable/ic_save_black_24dp"
             android:text="@string/edit_button_save"/>
-
-        <Button
-            android:id="@+id/button_delete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_remove_black_24dp"
-            android:drawableStart="@drawable/ic_remove_black_24dp"
-            android:text="@string/edit_button_delete"
-            android:textColor="@color/colorPrimaryDark"/>
 
     </LinearLayout>
 

@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_ADD = 100;
     private static final int REQUEST_EDIT = 101;
+    private static final int REQUEST_EDIT_MASTER = 102;
 
     private Sample sample = null;
     private ListAdapter listAdapter = null;
@@ -91,7 +92,9 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_edit) {
-            //
+            Intent intent = new Intent(MainActivity.this, EditMasterActivity.class);
+            intent.putExtra("data.item", sample);
+            startActivityForResult(intent, REQUEST_EDIT_MASTER);
             return true;
         }
         else if (id == R.id.action_delete_all) {
@@ -151,6 +154,12 @@ public class MainActivity extends AppCompatActivity {
                 listAdapter.notifyDataSetChanged();
                 Log.d(TAG, "delete with item position: " + position);
             }
+        }
+
+        else if (requestCode == REQUEST_EDIT_MASTER && resultCode == Activity.RESULT_OK) {
+            Sample item = resultIntent.getParcelableExtra("data.item");
+            sample.setName(item.getName());
+            sample.setData(item.getData());
         }
     }
 
