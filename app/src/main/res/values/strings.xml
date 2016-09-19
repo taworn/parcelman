@@ -1,7 +1,22 @@
 <resources>
 
     <string name="app_name">Parcelman</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_delete_all">Delete all</string>
     <string name="action_about">About</string>
+
+    <string name="list_item_data">data: </string>
+    <string name="list_item_previous_data">previous: </string>
+
+    <string name="title_activity_edit">Edit</string>
+    <string name="edit_hint_data">Edit data</string>
+    <string name="edit_button_save">Save</string>
+    <string name="edit_button_delete">Delete</string>
+
+    <string name="delete_all_dialog_caption">Delete All Data</string>
+    <string name="delete_all_dialog_message">Are you sure?</string>
+    <string name="delete_all_dialog_negative">No</string>
+    <string name="delete_all_dialog_positive">Yes</string>
 
     <string name="about_dialog_caption">About</string>
     <string name="about_dialog_message">Parcelman, version 1.0</string>

@@ -3,4 +3,9 @@
     <color name="colorPrimary">#F44336</color>
     <color name="colorPrimaryDark">#D32F2F</color>
     <color name="colorAccent">#40C4FF</color>
+
+    <color name="list_divider">#e0e0e0</color>
+    <color name="list_selected">#bdbdbd</color>
+    <color name="text_2nd_sub">#757575</color>
+    <color name="image_as_label_tint">#757575</color>
 </resources>
